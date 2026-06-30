@@ -34,7 +34,7 @@ ENV OPENFANG_HOME=/data \
     OPENFANG_ALLOW_NO_AUTH=1
 
 EXPOSE 4200
-VOLUME /data
+
 
 ENTRYPOINT ["sh", "-c", "OPENFANG_LISTEN=0.0.0.0:${PORT:-4200} openfang start"]
 
