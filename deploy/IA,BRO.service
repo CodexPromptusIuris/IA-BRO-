@@ -1,0 +1,30 @@
+[Unit]
+Description=IA,BRO Agent Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ia-bro
+Group=ia-bro
+ExecStart=/usr/local/bin/ia-bro start
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+EnvironmentFile=-/etc/ia-bro/env
+WorkingDirectory=/var/lib/ia-bro
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/ia-bro
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target
